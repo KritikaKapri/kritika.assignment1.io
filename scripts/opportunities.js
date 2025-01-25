@@ -6,12 +6,10 @@
  * Date of Completion: 2025-01-24
  **/
 
-
 "use strict";
 
 // Assuming you're working within the context of the page that includes this JS
 (function () {
-
     /**
      * Represents a volunteer opportunity.
      */
@@ -45,16 +43,14 @@
     const opportunities = [
         new VolunteerOpportunity("Beach Cleanup", "Help clean up the local beach and protect marine life.", "02/05/2025 09:00"),
         new VolunteerOpportunity("Food Bank Donation", "Assist in organizing and packing food donations for families in need.", "02/06/2025 10:00"),
-        new VolunteerOpportunity("Tree Planting", "Join us to plant trees and contribute to environmental conservation.", "02/07/2025 08:30")
+        new VolunteerOpportunity("Tree Planting", "Join us to plant trees and contribute to environmental conservation.", "02/07/2025 08:30"),
     ];
 
     /**
      * Display the volunteer opportunities on the page.
      */
     function displayOpportunitiesPage() {
-        console.log("Calling DisplayOpportunitiesPage....");
-
-        const opportunityContainer = document.getElementById('opportunity-cards');
+        const opportunityContainer = document.getElementById("opportunity-cards");
         let data = "";
 
         opportunities.forEach((opportunity, index) => {
@@ -65,8 +61,8 @@
 
         // Add event listeners to Sign Up buttons
         const signupButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
-        signupButtons.forEach(button => {
-            button.addEventListener('click', handleSignupButtonClick);
+        signupButtons.forEach((button) => {
+            button.addEventListener("click", handleSignupButtonClick);
         });
     }
 
@@ -74,9 +70,8 @@
      * Handle click on a Sign Up button to open the modal and set the opportunity index.
      */
     function handleSignupButtonClick(event) {
-        const opportunityIndex = event.target.getAttribute('data-opportunity-index');
+        const opportunityIndex = event.target.getAttribute("data-opportunity-index");
         console.log(`Sign Up clicked for Opportunity Index: ${opportunityIndex}`);
-        document.getElementById('opportunity-index').value = opportunityIndex;
     }
 
     /**
@@ -85,9 +80,9 @@
     function handleSignupFormSubmit(event) {
         event.preventDefault();
 
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const role = document.getElementById('role').value;
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const role = document.getElementById("role").value;
 
         if (!name || !email || !role) {
             alert("All fields are required!");
@@ -95,33 +90,50 @@
         }
 
         // Display confirmation message
-        document.getElementById('confirmationMessage').style.display = "block";
-        document.getElementById('signupForm').reset(); // Reset the form
+        document.getElementById("confirmationMessage").style.display = "block";
+        document.getElementById("signupForm").reset();
 
         // Close the modal after a delay
         setTimeout(() => {
-            const modal = new bootstrap.Modal(document.getElementById('signupModal'));
+            const modal = new bootstrap.Modal(document.getElementById("signupModal"));
             modal.hide();
         }, 2000);
     }
 
-    // Attach event listeners to the form
+    /**
+     * Attach event listeners to the form.
+     */
     function attachFormListeners() {
-        const form = document.getElementById('signupForm');
+        const form = document.getElementById("signupForm");
         if (form) {
-            form.addEventListener('submit', handleSignupFormSubmit);
+            form.addEventListener("submit", handleSignupFormSubmit);
         }
     }
 
-    // Initialize the opportunities page and form
-    function start() {
-        console.log("Starting Opportunities Page...");
+    /**
+     * Handle back-to-home button visibility on scroll.
+     */
+    function handleBackToHomeVisibility() {
+        const backToHomeButton = document.getElementById("backToHome");
+        window.onscroll = () => {
+            if (window.scrollY > 300) {
+                backToHomeButton.style.display = "block";
+            } else {
+                backToHomeButton.style.display = "none";
+            }
+        };
+    }
 
-        displayOpportunitiesPage();  // Display the opportunities list
-        attachFormListeners();       // Attach form submit listeners
+    /**
+     * Initialize the opportunities page and form.
+     */
+    function start() {
+        displayOpportunitiesPage();
+        attachFormListeners();
+        handleBackToHomeVisibility();
     }
 
     // Run the initialization function
     window.addEventListener("load", start);
-
 })();
+

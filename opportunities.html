@@ -130,32 +130,8 @@
 <!-- Link to external opportunities.js file -->
 <script src="scripts/opportunities.js"></script>
 
-<!-- Custom JavaScript to handle form submission and show confirmation -->
-<script>
-    document.getElementById('signupForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission
-
-        // Handle form data here (e.g., display confirmation message)
-        document.getElementById('confirmationMessage').style.display = 'block';
-
-        // Optionally, clear the form fields
-        document.getElementById('signupForm').reset();
-    });
-</script>
-
-<!-- Back to Home Button Visibility on Scroll -->
-<script>
-    const backToHomeButton = document.getElementById("backToHome");
-    window.onscroll = () => {
-        if (window.scrollY > 300) {
-            backToHomeButton.style.display = "block";
-        } else {
-            backToHomeButton.style.display = "none";
-        }
-    };
-</script>
-
 </body>
 </html>
+
 
 

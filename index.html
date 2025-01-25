@@ -3,6 +3,7 @@
     Date: January 2025
 -->
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -143,22 +144,7 @@
 <!-- Bootstrap JS -->
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Custom JS -->
-<script>
-    // Show or hide the "Back to Top" button
-    const backToTopButton = document.getElementById("backToTop");
-    window.onscroll = () => {
-        if (window.scrollY > 300) {
-            backToTopButton.style.display = "block";
-        } else {
-            backToTopButton.style.display = "none";
-        }
-    };
-
-    // Smooth scroll to top when the button is clicked
-    backToTopButton.onclick = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-</script>
+<script src="scripts/app.js"></script>
 </body>
 </html>
 
