@@ -3,7 +3,7 @@
  *
  * Author: Kritika Kapri, Amal Baradia
  * Student ID: 100938161, 100886422
- * Date of Completion: 2025-01-24
+ * Date of Completion: 2025-02-22
  **/
 
 "use strict";
@@ -47,7 +47,8 @@
     ];
 
     /**
-     * Display the volunteer opportunities on the page.
+     * Displays the list of volunteer opportunities on the page.
+     * Populates the container with opportunity cards.
      */
     function displayOpportunitiesPage() {
         const opportunityContainer = document.getElementById("opportunity-cards");
@@ -67,7 +68,9 @@
     }
 
     /**
-     * Handle click on a Sign Up button to open the modal and set the opportunity index.
+     * Handles the "Sign Up" button click event.
+     * Opens the modal and logs the selected opportunity index.
+     * @param {Event} event - The click event object.
      */
     function handleSignupButtonClick(event) {
         const opportunityIndex = event.target.getAttribute("data-opportunity-index");
@@ -75,7 +78,9 @@
     }
 
     /**
-     * Handle form submission for the modal.
+     * Handles form submission for signing up to an opportunity.
+     * Validates input fields and displays a confirmation message.
+     * @param {Event} event - The form submission event.
      */
     function handleSignupFormSubmit(event) {
         event.preventDefault();

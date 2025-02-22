@@ -8,98 +8,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Feedback</title>
     <!-- CSS Section -->
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.css">
     <link rel="stylesheet" href="./content/app.css">
-
-    <style>
-        /* Back to Home Button */
-        #backToHome {
-            display: none; /* Hidden by default */
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 18px;
-            text-align: center;
-            line-height: 50px;
-            cursor: pointer;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        #backToHome:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><i class="fa-solid fa-building"></i> Volunteer Connect</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="opportunities.html"><i class="fa-solid fa-handshake"></i> Volunteer Now</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="events.html"><i class="fa-solid fa-calendar-days"></i> Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="terms-of-service.html"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+<header></header>
 
 <main class="container">
-    <h1>Contact Us</h1>
+    <h1>Feedback</h1>
 
-    <form class="col-lg-6 col-md-10 col-sm-12 mb-4" id="contactForm">
+    <!-- Feedback Form -->
+    <form class="col-lg-6 col-md-10 col-sm-12 mb-4" id="feedbackForm">
         <div class="input-group mb-3">
             <span class="input-group-text">Name</span>
-            <input id="name" name="name" type="text" class="form-control" required>
+            <input id="feedbackName" name="name" type="text" class="form-control" required>
         </div>
 
         <div class="input-group mb-3">
             <span class="input-group-text">Email</span>
-            <input id="email" name="email" type="email" class="form-control" required>
+            <input id="feedbackEmail" name="email" type="email" class="form-control" required>
         </div>
 
         <div class="input-group mb-3">
-            <span class="input-group-text">Subject</span>
-            <input id="subject" name="subject" type="text" class="form-control" required>
+            <span class="input-group-text">Rating</span>
+            <select id="rating" name="rating" class="form-control" required>
+                <option value="5">5 - Excellent</option>
+                <option value="4">4 - Good</option>
+                <option value="3">3 - Average</option>
+                <option value="2">2 - Poor</option>
+                <option value="1">1 - Very Bad</option>
+            </select>
         </div>
 
         <div class="input-group mb-3">
-            <span class="input-group-text">Message</span>
-            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+            <span class="input-group-text">Comments</span>
+            <textarea id="comments" name="comments" class="form-control" rows="3" required></textarea>
         </div>
 
-        <button id="submitBtn" type="submit" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Submit</button>
-        <button id="resetBtn" type="reset" class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+        <button id="feedbackSubmitBtn" type="submit" class="btn btn-success"><i class="fa-solid fa-comment"></i> Submit Feedback</button>
     </form>
 
     <!-- Confirmation Modal -->
@@ -107,22 +56,27 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Thank You!</h5>
+                    <h5 class="modal-title">Submission Successful</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    Your inquiry has been submitted successfully. Redirecting to Home...
+                <div class="modal-body" id="confirmationModalBody">
                 </div>
             </div>
         </div>
     </div>
 </main>
-
-<!-- Back to Home Button -->
-<button id="backToHome" title="Back to Home"><i class="fas fa-arrow-up"></i></button>
+<!-- Footer -->
+<footer class="footer text-center py-3 bg-dark text-white">
+    <p>&copy; 2025 Volunteer Connect. All Rights Reserved.</p>
+    <ul class="nav justify-content-center">
+        <li class="nav-item"><a class="nav-link text-white" href="privacy-policy.html">Privacy Policy</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="terms-of-service.html">Terms of Service</a></li>
+    </ul>
+</footer>
 
 <!-- Scripting Section -->
-<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="scripts/contact.js"></script>
+<script src="scripts/app.js"></script>
 </body>
 </html>

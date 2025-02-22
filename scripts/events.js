@@ -3,7 +3,7 @@
  *
  * Author: Kritika Kapri, Amal Baradia
  * Student ID: 100938161, 100886422
- * Date of Completion: 2025-01-24
+ * Date of Completion: 2025-02-22
  **/
 
 "use strict";
@@ -30,23 +30,37 @@ class Event {
     }
 }
 
-// Array to hold events (sample data)
-const events = [
-    new Event("Beach Cleanup", "Join us for a day at the beach to clean up the shoreline.", "2025-02-05T09:00:00", "Cleanup"),
-    new Event("Fundraising Gala", "A night of elegance and giving to support local charities.", "2025-02-10T19:00:00", "Fundraiser"),
-    new Event("Workshop on Sustainability", "Learn about sustainable practices for a better future.", "2025-02-15T14:00:00", "Workshop"),
-    new Event("Park Cleanup", "Help clean up the park and protect our green spaces.", "2025-03-01T08:00:00", "Cleanup"),
-    new Event("Tech for Good", "A workshop on using technology for social good.", "2025-03-10T09:00:00", "Workshop")
-];
+/**
+ * Fetches event data from the `events.json` file and converts it into Event objects.
+ * @async
+ * @returns {Promise<Event[]>} A promise resolving to an array of Event objects.
+ */
+async function fetchEventsData() {
+    try {
+        const response = await fetch('data/events.json');
+        if (!response.ok) {
+            throw new Error('Failed to load events data');
+        }
+        const eventsData = await response.json();
+        return eventsData.map(event => new Event(event.title, event.description, event.date, event.category));
+    } catch (error) {
+        console.error("[ERROR] Unable to fetch events data:", error);
+        return [];
+    }
+}
 
-// Function to display events on the page
-function displayEventsPage() {
+/**
+ * Displays the events on the page by fetching data and rendering each event.
+ * @async
+ * @returns {Promise<void>}
+ */
+async function displayEventsPage() {
     console.log("Displaying Events Page...");
 
     const eventContainer = document.getElementById('event-list');
     eventContainer.innerHTML = "";  // Clear previous events
 
-    // Render each event
+    const events = await fetchEventsData();
     events.forEach(event => {
         eventContainer.innerHTML += event.render();
     });
@@ -55,7 +69,10 @@ function displayEventsPage() {
     attachFilterEventListeners();
 }
 
-// Function to handle event filtering by category
+/**
+ * Filters displayed events based on the selected category.
+ * @param {string} category - The category to filter events by ('All' for no filter).
+ */
 function filterEvents(category) {
     const eventCards = document.querySelectorAll('.event-card');
     eventCards.forEach(card => {
@@ -67,7 +84,9 @@ function filterEvents(category) {
     });
 }
 
-// Function to attach filter event listeners
+/**
+ * Attaches click event listeners to filter buttons to filter events by category.
+ */
 function attachFilterEventListeners() {
     const filterButtons = document.querySelectorAll('.filter-button');
     filterButtons.forEach(button => {
@@ -78,7 +97,9 @@ function attachFilterEventListeners() {
     });
 }
 
-// Initialize the page
+/**
+ * Initializes the events page by fetching and displaying events.
+ */
 function start() {
     console.log("Starting Events Page...");
     displayEventsPage();
@@ -86,4 +107,3 @@ function start() {
 
 // Call start function when the page loads
 window.addEventListener("load", start);
-

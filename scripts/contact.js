@@ -3,30 +3,35 @@
  *
  * Author: Kritika Kapri, Amal Baradia
  * Student ID: 100938161, 100886422
- * Date of Completion: 2025-01-24
+ * Date of Completion: 2025-02-22
  **/
 
 "use strict";
 
-// Handle form submission
-const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-    confirmationModal.show();
+document.addEventListener("DOMContentLoaded", function () {
+    // Handle feedback form submission with AJAX-like behavior
+    const feedbackForm = document.getElementById("feedbackForm");
+    feedbackForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    setTimeout(() => {
-        confirmationModal.hide();
-        window.location.href = 'index.html';
-    }, 5000);
+        const formData = {
+            name: document.getElementById("feedbackName").value,
+            email: document.getElementById("feedbackEmail").value,
+            rating: document.getElementById("rating").value,
+            comments: document.getElementById("comments").value,
+        };
+
+        // Simulate AJAX request (Replace this with an actual API call if needed)
+        setTimeout(() => {
+            document.getElementById("confirmationModalBody").innerHTML = `
+                <h5>Feedback Submitted Successfully!</h5>
+                <p><strong>Name:</strong> ${formData.name}</p>
+                <p><strong>Email:</strong> ${formData.email}</p>
+                <p><strong>Rating:</strong> ${formData.rating} Stars</p>
+                <p><strong>Comments:</strong> ${formData.comments}</p>
+            `;
+            const confirmationModal = new bootstrap.Modal(document.getElementById("confirmationModal"));
+            confirmationModal.show();
+        }, 1000);
+    });
 });
-
-// Show or hide the "Back to Home" button based on scroll position
-const backToHomeButton = document.getElementById("backToHome");
-window.onscroll = () => {
-    if (window.scrollY > 300) {
-        backToHomeButton.style.display = "block";
-    } else {
-        backToHomeButton.style.display = "none";
-    }
-};

@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>Upcoming Events</title>
     <!-- CSS Section -->
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.css">
@@ -68,38 +68,7 @@
 </head>
 <body>
 
-<header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><i class="fa-solid fa-building"></i> Volunteer Connect</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="opportunities.html"><i class="fa-solid fa-handshake"></i> Volunteer Now</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="events.html"><i class="fa-solid fa-calendar-days"></i> Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="terms-of-service.html"><i class="fa-solid fa-file-contract"></i> Terms of Service</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+<header></header>
 
 <!-- Main Content -->
 <div class="container mt-5">
@@ -116,16 +85,44 @@
     <!-- Event List -->
     <div id="event-list" class="row">
         <!-- Event cards will be rendered here -->
+
+        <!-- Sample Event Card -->
+        <div class="card event-card" data-category="Fundraiser">
+            <div class="card-body">
+                <h5 class="card-title event-title">Tech Charity Fundraiser</h5>
+                <p class="card-text event-description">Join us for a fundraising event to support tech education!</p>
+                <p class="event-date">January 20, 2025</p>
+            </div>
+        </div>
+
+        <!-- Another Sample Event Card -->
+        <div class="card event-card" data-category="Workshop">
+            <div class="card-body">
+                <h5 class="card-title event-title">Tech Workshop: Coding for Beginners</h5>
+                <p class="card-text event-description">A beginner's workshop to get started with coding in Python.</p>
+                <p class="event-date">February 5, 2025</p>
+            </div>
+        </div>
+
+        <!-- More Event Cards -->
     </div>
 </div>
-
+<!-- Footer -->
+<footer class="footer text-center py-3 bg-dark text-white">
+    <p>&copy; 2025 Volunteer Connect. All Rights Reserved.</p>
+    <ul class="nav justify-content-center">
+        <li class="nav-item"><a class="nav-link text-white" href="privacy-policy.html">Privacy Policy</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="terms-of-service.html">Terms of Service</a></li>
+    </ul>
+</footer>
 <!-- Back to Home Button -->
 <button id="backToHome" onclick="window.location.href='index.html';"><i class="fa-solid fa-arrow-left"></i></button>
 
+<<!-- Scripting Section -->
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="scripts/events.js"></script>
+<script src="scripts/app.js"></script>
+
 
 </body>
 </html>
-
-
-

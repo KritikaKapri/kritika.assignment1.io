@@ -17,6 +17,10 @@
     "@fullcalendar/list": "^6.1.15",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "lg-autoplay": "^1.2.1",
+    "lg-fullscreen": "^1.2.1",
+    "lg-thumbnail": "^1.2.1",
+    "lightgallery": "^2.8.2"
   }
 }
